@@ -74,11 +74,16 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             yearText.text = ""
         }
         
-        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(gestureRecognizer)
         
         imageView.isUserInteractionEnabled = true
         let imageTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         imageView.addGestureRecognizer(imageTapRecognizer)
+    }
+    
+    @objc func hideKeyboard(){
+        view.endEditing(true)
     }
     
     @objc func selectImage() {
